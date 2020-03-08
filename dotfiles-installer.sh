@@ -1,9 +1,9 @@
 #! /bin/bash
-ln -s ~/dotfiles/.vim/ ~/.vim
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.gvimrc ~/.gvimrc
-ln -s ~/dotfiles/.zsh/ ~/.zsh
-ln -s ~/dotfiles/.zshrc ~/.zshr
+ln -sf ~/dotfiles/.vim/ ~/.vim
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.gvimrc ~/.gvimrc
+ln -sf ~/dotfiles/.zsh/ ~/.zsh
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
 chmod +x dotfiles-installer.sh
 bash ./dotfiles-installer.sh
