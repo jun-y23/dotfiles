@@ -15,9 +15,6 @@ compinit
 
 set incsearch
 
-# cdの後にlsを実行
-chpwd() { ls -ltr --color=auto }
-
 # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
 setopt no_flow_control
 
@@ -30,9 +27,8 @@ function mkcd() {
     mkdir -p $1 && cd $1
   fi
 }
-# linuxのlsを実行
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH=$PATH:/Users/jumac/.nodebrew/current/bin
+alias ls="gls --color=auto"
+alias la="ls -la"
 
 # 入力補完
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
