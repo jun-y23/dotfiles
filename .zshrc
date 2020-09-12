@@ -32,3 +32,4 @@ alias la="ls -la"
 
 # 入力補完
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(anyenv init -)"

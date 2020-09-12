@@ -1,0 +1,7 @@
+# lazyロード用
+# 整形
+[[plugins]]
+repo  = 'prettier/vim-prettier'
+build = 'npm install'
+branch = 'release/1.x'
+on_ft = ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']

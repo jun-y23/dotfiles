@@ -1,5 +1,6 @@
 set encoding=UTF-8
-"---------------------------------------------------------------------------
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+" ---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
 "
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
@@ -8,8 +9,8 @@ set ignorecase
 set smartcase
 set incsearch
 
-"---------------------------------------------------------------------------
-" 編集に関する設定:
+" ---------------------------------------------------------------------------
+" 編集に関する設定
 "
 " タブの画面上での幅
 set tabstop=4
@@ -67,6 +68,9 @@ augroup cch
     autocmd WinEnter,BufRead * set cursorline
 augroup END
 
+" フォルダアイコンを表示
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 
 """""""""""""""""""""""""
 " ### dein.vim 設定 ### "
@@ -109,12 +113,15 @@ if dein#check_install()
   call dein#install()
 endif
 
+let g:dein#auto_recache = 1
+
 " 見た目変更適用
 syntax on
 
 " nerd tree 追加
 " autocmd vimenter * NERDTree
 map <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1 "隠しファイルを表示
 
 " 保存時に行末の余分な余白削除
 autocmd BufWritePre * :%s/\s\+$//ge
@@ -131,10 +138,6 @@ set hlsearch
 
 " 日本語と、カレントカーソルがが見えにくくなったので、行ハイライト非表示
 hi clear CursorLine
-
-" 文字コード自動判別らしい
-set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 
 " memolistの設定
 " suffix type (default markdown)
@@ -155,38 +158,60 @@ inoremap <C-c> <ESC>
 
 nnoremap == gg=G    "=を二回連続入力でバッファ全体をインデント整理
 
-" autocmd vimenter * NERDTree
-map <C-e> :NERDTreeToggle<CR>
-
 nnoremap <C-f> :MemoNew<CR>
 nnoremap <C-l> :MemoList<CR>
 nnoremap <C-g> :MemoGrep<CR>
+nnoremap <C-p> :Prettier<CR>
+
+nnoremap <Tab>l :+tabmove<CR>
+nnoremap <Tab>h :-tabmove<CR>
 
 " airlineテーマ
 let g:airline_theme = 'wombat'
+" Powerline系フォントを利用する
 set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
-  let g:airline_section_b =
-        \ '%{airline#extensions#branch#get_head()}' .
-        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
-        \ '%t%( %M%)'
-let g:airline_section_c = '%t'
-let g:airline_section_x = '%{&filetype}'
-let g:airline#extensions#whitespace#enabled = 1
-"左側に使用されるセパレータ
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.branch = '⎇'
+
+" old vim-powerline symbols
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
-"右側に使用されるセパレータ
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
-
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 
 "  ▼▼htmlタグ補完
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -214,14 +239,6 @@ let g:closetag_xhtml_filetypes = 'xhtml,jsx'
 "
 let g:closetag_emptyTags_caseSensitive = 1
 
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-"
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
-
 " Shortcut for closing tags, default is '>'
 "
 let g:closetag_shortcut = '>'
@@ -229,3 +246,23 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+" airlineの文字化け対策
+set ambiwidth=double
+
+let g:prettier#exec_cmd_path = "/node_modules/.bin/prettier"
+let g:prettier#exec_cmd_async = 0
+" @formatアノテーションを持ったファイルの自動フォーマットを無効にする
+let g:prettier#autoformat = 0
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+let g:lexima_enable_basic_rules = 1
+
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+let g:ale_sign_column_always = 1

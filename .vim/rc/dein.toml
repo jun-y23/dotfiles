@@ -1,5 +1,8 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+# アイコン表示
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
 # 構造出すやつ
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -45,9 +48,15 @@ repo = 'markonm/traces.vim'
 repo = 'vim-airline/vim-airline'
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
 
 # 補完
 [[plugins]]
 repo = 'alvan/vim-closetag'
+
+# ▼Java Script用
+[[plugins]]
+repo = 'othree/yajs.vim'
+# ALE 非同期整形エンジン
+[[plugins]]
+repo = 'w0rp/ale'
+
