@@ -6,9 +6,10 @@ repo = 'ryanoasis/vim-devicons'
 # 構造出すやつ
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
 # 見た目かえるやつ
 [[plugins]]
-
 repo = 'w0ng/vim-hybrid'
 # 色変えるやつ
 [[plugins]]
@@ -60,3 +61,6 @@ repo = 'othree/yajs.vim'
 [[plugins]]
 repo = 'w0rp/ale'
 
+# ansibleのyamlファイルのオートインデントをきれいに。
+[[plugins]]
+repo = 'chase/vim-ansible-yaml'

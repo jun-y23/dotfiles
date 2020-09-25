@@ -2,6 +2,7 @@ PS1="%1~ %# "
 
 # Ctrl+Dでログアウトしてしまうことを防ぐ
 setopt IGNOREEOF
+eval "$(anyenv init -)"
 
 # 日本語を使用
 export LANG=ja_JP.UTF-8
@@ -12,8 +13,8 @@ colors
 # 補完
 autoload -Uz compinit
 compinit
-
-set incsearch
+# 入力補完
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
 setopt no_flow_control
@@ -29,7 +30,5 @@ function mkcd() {
 }
 alias ls="gls --color=auto"
 alias la="ls -la"
-
-# 入力補完
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-eval "$(anyenv init -)"
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim "$@"'
+alias chrome='open -a Google\ Chrome'
