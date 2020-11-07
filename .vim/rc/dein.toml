@@ -64,3 +64,34 @@ repo = 'w0rp/ale'
 # ansibleのyamlファイルのオートインデントをきれいに。
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
+
+[[plugins]]
+repo  = 'phpactor/phpactor'
+on_ft = ['php']
+build = 'composer install'
+
+# Vim8の場合、nvim-yarpの動作に必要
+[[plugins]]
+repo    = 'roxma/vim-hug-neovim-rpc'
+if      = '!has("nvim") && has("python3")'
+depends = 'nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if   = '!has("nvim") && has("python3")'
+# 補完
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if   = 'has("python3")'
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo  = 'kristijanhusak/deoplete-phpactor'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'skanehira/docker.vim'
+[[plugins]]
+repo = 'skanehira/docker-compose.vim'

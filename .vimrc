@@ -160,7 +160,6 @@ nnoremap <C-g> :MemoGrep<CR>
 nnoremap <C-p> :Prettier<CR>
 nnoremap <Tab>l :+tabmove<CR>
 nnoremap <Tab>h :-tabmove<CR>
-set termwinkey=<C-d>
 
 "======================================
 " airlineテーマ
@@ -274,3 +273,14 @@ endif
 " yamlファイルで空行があればインデントリセット
 let g:ansible_options = {'ignore_blank_lines': 0}
 
+"======================================
+" phpactor
+"======================================
+" 画面を分割して定義元へのジャンプ
+function! DefinitionJumpWithPhpactor()
+    split
+    call phpactor#GotoDefinition()
+endfunction
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
