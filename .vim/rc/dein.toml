@@ -65,11 +65,6 @@ repo = 'w0rp/ale'
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
 
-[[plugins]]
-repo  = 'phpactor/phpactor'
-on_ft = ['php']
-build = 'composer install'
-
 # Vim8の場合、nvim-yarpの動作に必要
 [[plugins]]
 repo    = 'roxma/vim-hug-neovim-rpc'
@@ -95,3 +90,15 @@ on_ft = ['php']
 repo = 'skanehira/docker.vim'
 [[plugins]]
 repo = 'skanehira/docker-compose.vim'
+
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+# React syntax highlighting
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+branch = 'release'

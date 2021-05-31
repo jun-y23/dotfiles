@@ -1,6 +1,7 @@
 set encoding=UTF-8
   set guifont=Hack\ Nerd\ Font\ Mono
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8
+set fileformats=unix,dos,mac
 
 "======================================
 " 検索の挙動に関する設定:
@@ -245,7 +246,7 @@ let g:prettier#exec_cmd_async = 0
 let g:prettier#autoformat = 0
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
 let g:lexima_enable_basic_rules = 1
 let g:ale_sign_column_always = 1
@@ -273,14 +274,3 @@ endif
 " yamlファイルで空行があればインデントリセット
 let g:ansible_options = {'ignore_blank_lines': 0}
 
-"======================================
-" phpactor
-"======================================
-" 画面を分割して定義元へのジャンプ
-function! DefinitionJumpWithPhpactor()
-    split
-    call phpactor#GotoDefinition()
-endfunction
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
