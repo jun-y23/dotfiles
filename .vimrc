@@ -31,8 +31,6 @@ set showmatch
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
-" ヤンクでクリップボードに貼り付け
-set clipboard+=unnamed
 " 検索時のハイライト設定
 set hlsearch
 " 日本語と、カレントカーソルがが見えにくくなったので、行ハイライト非表示
@@ -274,3 +272,8 @@ endif
 " yamlファイルで空行があればインデントリセット
 let g:ansible_options = {'ignore_blank_lines': 0}
 
+
+" easy tab switching
+nmap gm :bp<cr>
+nmap gn :bn<cr>
+nmap gc :BD<cr>

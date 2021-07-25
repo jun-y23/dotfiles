@@ -41,12 +41,49 @@ alias gs="git status"
 alias gp="git push"
 alias gb="git branch"
 alias ga="git add"
+alias gpush-u='git symbolic-ref --short HEAD | tr -d "\n" | xargs -I@ git push -u origin @'
 
 alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=1000000
+
+function ghq-new() {
+    local REPONAME=$1
+
+    if [ -z "$REPONAME" ]; then
+        echo 'Repository name must be specified.'
+        return
+    fi
+
+    local TMPDIR=/tmp/ghq_new
+    local TMPREPODIR=$TMPDIR/$REPONAME
+
+    mkdir -p $TMPREPODIR
+    cd $TMPREPODIR
+
+    local GITPATH="https://github.com/jun-y23"
+    local REPOPATH=$GITPATH/$REPONAME
+
+
+    git init
+    gh repo create
+    wait
+
+    echo "# $REPONAME" > README.md
+    git add README.md
+    git commit -m "first commit"
+    git branch -M main
+    git push -u origin main
+    wait
+
+    ghq get $REPOPATH
+
+    cd $(ghq root)/$REPNAME
+
+    rm -rf $TMPREPODIR
+}
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
@@ -75,7 +112,7 @@ function peco-cdr () {
     fi
 }
 zle -N peco-cdr
-bindkey '^E' peco-cdr
+bindkey '^[' peco-cdr
 
 function peco-ghq-look () {
     local ghq_roots="$(git config --path --get-all ghq.root)"
@@ -93,9 +130,5 @@ function peco-ghq-look () {
 zle -N peco-ghq-look
 bindkey '^G' peco-ghq-look
 
-function ghcr()
-    gh repo create $argv
-    ghq get $argv[1]
-    code (ghq list --full-path -e $argv[1])
-end
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 
