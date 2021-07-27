@@ -138,6 +138,7 @@ let g:memolist_memo_suffix = "md"
 let g:memolist_memo_date = "%Y-%m-%d %H:%M"
 let g:memolist_memo_date = "epoch"
 let g:memolist_memo_date = "%D %T"
+let g:memolist_path = "/Users/yamaguchiatsushi/src/github.com/jun-y23/memo-personal"
 
 " git 差分反映時間設定
 set updatetime=100
@@ -150,6 +151,8 @@ inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap [ []<ESC>i
+inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 
@@ -157,8 +160,6 @@ nnoremap <C-m> :MemoNew<CR>
 nnoremap <C-l> :MemoList<CR>
 nnoremap <C-g> :MemoGrep<CR>
 nnoremap <C-p> :Prettier<CR>
-nnoremap <Tab>l :+tabmove<CR>
-nnoremap <Tab>h :-tabmove<CR>
 
 "======================================
 " airlineテーマ

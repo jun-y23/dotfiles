@@ -1,19 +1,22 @@
 PS1="%1~ %# "
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=1000000
 
 # Ctrl+Dでログアウトしてしまうことを防ぐ
 setopt IGNOREEOF
-eval "$(anyenv init -)"
 
 # 日本語を使用
 export LANG=ja_JP.UTF-8
 # 色を使用
 autoload -Uz colors
-colors
 
 # 補完
 autoload -Uz compinit
-compinit
 # 入力補完
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -43,11 +46,7 @@ alias gb="git branch"
 alias ga="git add"
 alias gpush-u='git symbolic-ref --short HEAD | tr -d "\n" | xargs -I@ git push -u origin @'
 
-alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
-
-HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=1000000
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 
 function ghq-new() {
     local REPONAME=$1
@@ -130,5 +129,5 @@ function peco-ghq-look () {
 zle -N peco-ghq-look
 bindkey '^G' peco-ghq-look
 
-alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 
+export PATH=$PATH:~/go/1.16.6/bin
