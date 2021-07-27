@@ -21,6 +21,8 @@ repo = 'plasticboy/vim-markdown'
 repo = 'kannokanno/previm'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+[[plugins]]
+repo = 'skanehira/preview-markdown.vim'
 # ▲▲▲ ここまで、Markdown 用 ▲▲▲
 # memo
 [[plugins]]
