@@ -85,22 +85,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo  = 'kristijanhusak/deoplete-phpactor'
-on_ft = ['php']
-
-[[plugins]]
 repo = 'skanehira/docker.vim'
 [[plugins]]
 repo = 'skanehira/docker-compose.vim'
-
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-# React syntax highlighting
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-branch = 'release'

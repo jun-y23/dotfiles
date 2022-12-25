@@ -1,1 +1,0 @@
-/Users/yamaguchiatsushi/dotfiles/.zsh/
