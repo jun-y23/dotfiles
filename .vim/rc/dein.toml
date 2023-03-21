@@ -1,90 +1,18 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-# アイコン表示
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-# 構造出すやつ
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-[[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-# 見た目かえるやつ
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-# 色変えるやつ
-[[plugins]]
-repo = 'vim-scripts/Lucius'
+
 # ▼▼▼ ここから、Markdown 用 ▼▼▼
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-[[plugins]]
-repo = 'kannokanno/previm'
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-[[plugins]]
-repo = 'skanehira/preview-markdown.vim'
 # ▲▲▲ ここまで、Markdown 用 ▲▲▲
+
 # memo
 [[plugins]]
 repo = 'glidenote/memolist.vim'
-# ▼▼git用
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-# ▲▲ここまでgit
-# 曖昧検索
-[[plugins]]
-repo = 'junegunn/fzf'
-build_on = '''
-./install -all
-'''
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
 
 #文字置換をリアルタイム反映
 [[plugins]]
 repo = 'markonm/traces.vim'
-# status bar 追加
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
 
 # 補完
 [[plugins]]
 repo = 'alvan/vim-closetag'
 
-# ▼Java Script用
-[[plugins]]
-repo = 'othree/yajs.vim'
-# ALE 非同期整形エンジン
-[[plugins]]
-repo = 'w0rp/ale'
-
-# ansibleのyamlファイルのオートインデントをきれいに。
-[[plugins]]
-repo = 'chase/vim-ansible-yaml'
-
-# Vim8の場合、nvim-yarpの動作に必要
-[[plugins]]
-repo    = 'roxma/vim-hug-neovim-rpc'
-if      = '!has("nvim") && has("python3")'
-depends = 'nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = '!has("nvim") && has("python3")'
-# 補完
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if   = 'has("python3")'
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
-'''
-
-[[plugins]]
-repo = 'skanehira/docker.vim'
-[[plugins]]
-repo = 'skanehira/docker-compose.vim'
