@@ -1,4 +1,3 @@
-zstyle ":completion:*:commands" rehash 1
 export LANG=ja_JP.UTF-8
 
 # 色を使用
@@ -23,11 +22,6 @@ alias v='nvim'
 alias vi='nvim'
 alias python="python3"
 
-PROMPT='
-[%B%F{red}%n@%f%b:%F{green}%~%f]%F{cyan}$(git_super_status)%f
-%F{yellow}$%f '
-
-
 export PATH=$PATH:/Users/junyamaguchi/go/1.20.0/bin/
 
 eval "$(gh completion -s zsh)"
@@ -36,8 +30,14 @@ if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $(brew --prefix)/opt/zsh-git-prompt/zshrc.sh
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
     autoload -Uz compinit
     compinit
+
+    autoload -U promptinit;
+    promptinit
+
+    prompt typewritten
 fi
 
