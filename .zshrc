@@ -22,6 +22,10 @@ alias v='nvim'
 alias vi='nvim'
 alias python="python3"
 
+alias ga='git add .'
+alias gco='git commit -m'
+alias gs='git status'
+
 export PATH=$PATH:/Users/junyamaguchi/go/1.20.0/bin/
 
 eval "$(gh completion -s zsh)"
