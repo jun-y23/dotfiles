@@ -16,3 +16,12 @@ repo = 'markonm/traces.vim'
 [[plugins]]
 repo = 'alvan/vim-closetag'
 
+# 補完
+[[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+
