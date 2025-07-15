@@ -5,12 +5,22 @@ terraform = "latest"
 python = "latest"
 
 neovim = "stable"
+lua = "5.1"
+luarocks = "5.1"
 
 peco = "latest"
 ripgrep = "latest"
 lazygit = "latest"
 gh = "latest"
 ghq = "latest"
+
+# Go tools
+gopls = "latest"
+golangci-lint = "latest"
+
+# TypeScript/JavaScript tools
+"npm:typescript-language-server" = "latest"
+"npm:@biomejs/biome" = "latest"
 
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
