@@ -55,6 +55,8 @@ return {
             ["<C-j>"] = function() vim.cmd("wincmd j") end,
             ["<C-k>"] = function() vim.cmd("wincmd k") end,
             ["<C-l>"] = function() vim.cmd("wincmd l") end,
+            ["l"] = "open",
+            ["h"] = "close_node",
           }
         }
       })
