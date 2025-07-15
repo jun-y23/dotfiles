@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "leoafarias/fvm"
 tap "supabase/tap"
 brew "cairo"
@@ -30,4 +29,3 @@ mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Transporter", id: 1450874784
-mas "Xcode", id: 497799835
