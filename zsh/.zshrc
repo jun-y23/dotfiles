@@ -67,3 +67,8 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# Activate mise
+eval "$(mise activate zsh)"
+eval "$(/Users/junyamaguchi/.local/bin/mise activate zsh)"
+eval "$(/Users/junyamaguchi/.local/bin/mise activate zsh)"
