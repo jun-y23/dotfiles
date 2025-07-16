@@ -49,6 +49,11 @@ return {
     },
     config = function()
       require('neo-tree').setup({
+        filesystem = {
+          filtered_items = {
+            hide_dotfiles = false,
+          },
+        },
         window = {
           mappings = {
             ["<C-h>"] = function() vim.cmd("wincmd h") end,
