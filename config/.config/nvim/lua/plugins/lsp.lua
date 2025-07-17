@@ -1,8 +1,45 @@
 return {
+  -- Mason: LSP installer
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
+        }
+      })
+    end,
+  },
+
+  -- Mason LSPConfig bridge
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "gopls",
+          "ts_ls",
+          "lua_ls",
+        },
+        automatic_installation = true,
+      })
+    end,
+  },
+
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
       "stevearc/conform.nvim",
     },
     config = function()
@@ -33,7 +70,7 @@ return {
         severity_sort = false,
       })
 
-      -- Go LSP (gopls)
+      -- Setup LSP servers managed by Mason
       lspconfig.gopls.setup({
         on_attach = on_attach,
         settings = {
@@ -48,7 +85,6 @@ return {
         },
       })
 
-      -- TypeScript LSP
       lspconfig.ts_ls.setup({
         on_attach = on_attach,
         settings = {
@@ -73,6 +109,21 @@ return {
               includeInlayFunctionLikeReturnTypeHints = true,
               includeInlayEnumMemberValueHints = true,
             },
+          },
+        },
+      })
+
+      lspconfig.lua_ls.setup({
+        on_attach = on_attach,
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
           },
         },
       })
