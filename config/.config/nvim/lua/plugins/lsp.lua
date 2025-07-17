@@ -44,11 +44,9 @@ return {
     },
     config = function()
       local lspconfig = require("lspconfig")
-      
       -- LSP keymaps
       local on_attach = function(client, bufnr)
         local opts = { buffer = bufnr, silent = true }
-        
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
@@ -151,3 +149,4 @@ return {
     },
   },
 }
+
