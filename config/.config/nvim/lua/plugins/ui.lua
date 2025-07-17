@@ -1,4 +1,25 @@
 return {
+  -- Tokyo Night theme
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true }
+        }
+      })
+
+      -- 背景色を透過
+      vim.cmd('colorscheme tokyonight')
+      vim.cmd('highlight Normal guibg=NONE ctermbg=NONE')
+    end
+  },
+
   -- Toggleterm
   {
     'akinsho/toggleterm.nvim',
@@ -8,21 +29,19 @@ return {
         open_mapping = [[<c-\>]],
         direction = 'float',
       })
-      
       -- Horizontal terminal toggle
       vim.keymap.set('n', '<leader>th', function()
         vim.cmd('ToggleTerm direction=horizontal')
       end, { desc = 'Toggle horizontal terminal' })
-      
       -- Terminal resize keymaps
       vim.keymap.set('n', '<leader>t+', ':resize +5<CR>', { desc = 'Increase terminal height' })
       vim.keymap.set('n', '<leader>t-', ':resize -5<CR>', { desc = 'Decrease terminal height' })
       vim.keymap.set('n', '<leader>t>', ':vertical resize +10<CR>', { desc = 'Increase terminal width' })
       vim.keymap.set('n', '<leader>t<', ':vertical resize -10<CR>', { desc = 'Decrease terminal width' })
-      
+
       -- Terminal navigation keymaps
       function _G.set_terminal_keymaps()
-        local opts = {buffer = 0}
+        local opts = { buffer = 0 }
         -- Window navigation
         vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
         vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
@@ -33,11 +52,11 @@ return {
         -- Normal mode navigation in terminal
         vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], opts)
       end
-      
+
       vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
     end
   },
-  
+
   -- Neo-tree
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -55,25 +74,25 @@ return {
           },
         },
         icon = {
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "󰜌",
-            provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
-              if node.type == "file" or node.type == "terminal" then
-                local success, web_devicons = pcall(require, "nvim-web-devicons")
-                local name = node.type == "terminal" and "terminal" or node.name
-                if success then
-                  local devicon, hl = web_devicons.get_icon(name)
-                  icon.text = devicon or icon.text
-                  icon.highlight = hl or icon.highlight
-                end
+          folder_closed = "",
+          folder_open = "",
+          folder_empty = "󰜌",
+          provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
+            if node.type == "file" or node.type == "terminal" then
+              local success, web_devicons = pcall(require, "nvim-web-devicons")
+              local name = node.type == "terminal" and "terminal" or node.name
+              if success then
+                local devicon, hl = web_devicons.get_icon(name)
+                icon.text = devicon or icon.text
+                icon.highlight = hl or icon.highlight
               end
-            end,
-            -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-            -- then these will never be used.
-            default = "*",
-            highlight = "NeoTreeFileIcon",
-          },
+            end
+          end,
+          -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+          -- then these will never be used.
+          default = "*",
+          highlight = "NeoTreeFileIcon",
+        },
 
         window = {
           mappings = {
@@ -86,7 +105,7 @@ return {
           }
         }
       })
-      
+
       -- Neotree toggle keybind
       vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', { silent = true })
     end
