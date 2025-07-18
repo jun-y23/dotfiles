@@ -1,6 +1,7 @@
 {
   "claudecode.nvim": { "branch": "main", "commit": "91357d810ccf92f6169f3754436901c6ff5237ec" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazygit.nvim": { "branch": "main", "commit": "4839ab642962cc76bb1bf278427dc4c59be15072" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "bc743e4f3dc4b6d22b0a9e0b68a6664d93f8a694" },

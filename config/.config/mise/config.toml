@@ -14,13 +14,12 @@ ripgrep = "latest"
 lazygit = "latest"
 gh = "latest"
 ghq = "latest"
+oxker = "latest"
 
 # Go tools
 gopls = "latest"
 golangci-lint = "latest"
 
-# TypeScript/JavaScript tools
-"npm:typescript-language-server" = "latest"
 "npm:@biomejs/biome" = "latest"
 
 "npm:@anthropic-ai/claude-code" = "latest"
