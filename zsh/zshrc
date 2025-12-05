@@ -29,6 +29,13 @@ alias gco='git commit -m'
 alias gs='git status'
 alias gc='git checkout'
 alias gb='git branch'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias gunco='git reset --soft HEAD~1'
+alias gwip='git add --all; git ls-files --deleted -z | xargs -0 git rm; git commit --message=wip'
+
+
 
 
 if type brew &>/dev/null; then
