@@ -1,0 +1,9 @@
+{
+  "nvim": "~/.config/nvim",
+  "mise": "~/.config/mise",
+  "gh": "~/.config/gh",
+  "git": "~/.config/git",
+  "zsh/zshrc": "~/.zshrc",
+  "zsh/zprofile": "~/.zprofile",
+  "zsh/zshrc.check_update_dotfiles": "~/.zshrc.check_update_dotfiles"
+}
