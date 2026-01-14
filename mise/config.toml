@@ -5,7 +5,7 @@ typescript = "latest"
 terraform = "latest"
 python = "latest"
 
-neovim = "stable"
+neovim = "latest"
 lua = "5.1"
 luarocks = "5.1"
 
