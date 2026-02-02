@@ -16,11 +16,5 @@ gh = "latest"
 ghq = "latest"
 oxker = "latest"
 
-# Go tools
-gopls = "latest"
-golangci-lint = "latest"
+[env]
 
-"npm:@biomejs/biome" = "latest"
-
-"npm:@anthropic-ai/claude-code" = "latest"
-"npm:@google/gemini-cli" = "latest"
