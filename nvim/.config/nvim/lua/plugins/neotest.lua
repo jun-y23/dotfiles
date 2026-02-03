@@ -20,7 +20,7 @@ return {
         table.insert(
           opts.adapters,
           jest {
-            jestCommand = "npm test --",
+            jestCommand = "yarn test --",
             jestConfigFile = function(file)
               if string.find(file, "/packages/") then
                 return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts"
