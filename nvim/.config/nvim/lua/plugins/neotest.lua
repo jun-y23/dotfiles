@@ -1,24 +1,31 @@
 ---@type LazySpec
 return {
   {
-    "fredrikaverpil/neotest-golang",
-    dependencies = { "nvim-neotest/neotest" },
-  },
-  {
-    "marilari88/neotest-vitest",
-    dependencies = { "nvim-neotest/neotest" },
-  },
-  {
     "nvim-neotest/neotest",
-    optional = true,
-    opts = function(_, opts)
-      if not opts.adapters then opts.adapters = {} end
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "haydenmeade/neotest-jest",
+      "marilari88/neotest-vitest",
+      "nvim-neotest/neotest-go",
+    },
+    config = function(_, opts)
+      local adapters = {}
+
+      -- Golang adapter (neotest-go with coverage output)
+      local avail_go, neotest_go = pcall(require, "neotest-go")
+      if avail_go then
+        table.insert(adapters, neotest_go({
+          args = { "-coverprofile=coverage.out" },
+        }))
+      end
 
       -- Jest adapter
-      local avail, jest = pcall(require, "neotest-jest")
-      if avail then
+      local avail_jest, jest = pcall(require, "neotest-jest")
+      if avail_jest then
         table.insert(
-          opts.adapters,
+          adapters,
           jest {
             jestCommand = "yarn test --",
             jestConfigFile = function(file)
@@ -36,13 +43,15 @@ return {
         )
       end
 
-      -- Golang adapter
-      local avail_go, golang = pcall(require, "neotest-golang")
-      if avail_go then table.insert(opts.adapters, golang()) end
-
       -- Vitest adapter
       local avail_vitest, vitest = pcall(require, "neotest-vitest")
-      if avail_vitest then table.insert(opts.adapters, vitest {}) end
+      if avail_vitest then table.insert(adapters, vitest {}) end
+
+      -- Merge with existing opts if any
+      opts = opts or {}
+      opts.adapters = adapters
+
+      require("neotest").setup(opts)
     end,
   },
 }

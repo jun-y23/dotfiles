@@ -116,6 +116,23 @@ return {
     },
   },
 
+  -- Go coverage visualization
+  {
+    "andythigpen/nvim-coverage",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "Coverage", "CoverageLoad", "CoverageShow", "CoverageHide", "CoverageToggle" },
+    config = function()
+      require("coverage").setup({
+        commands = true,
+        lang = {
+          go = {
+            coverage_file = "coverage.out",
+          },
+        },
+      })
+    end,
+  },
+
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
